@@ -1,11 +1,12 @@
 const express = require('express');
+const path = require("path");
+
 const app = express();
-const { readFile } = require('fs').promises;
 
 app.get('/', async (request, response) => {
 
-    response.send( await readFile('./home.html', 'utf8') );
+    response.sendFile(path.join(__dirname, "home.html"));
 
 });
 
-app.listen(process.env.PORT || 3000, () => console.log(`App available on http://localhost:3000`)) 
+app.listen(process.env.PORT || 9000, () => console.log(`App available on http://localhost:9000`)) 
